@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SnowReport</string>
+    <string name="preferences_title">Preferences</string>
+    
+    
+    <string name="region_title">Region</string>
+	<string-array name="region_id">
+		<item>000</item>
+		<item>007</item>
+		<item>009</item>
+		<item>001</item>
+		<item>008</item>
+		<item>002</item>
+		<item>006</item>
+		<item>005</item>
+		<item>013</item>
+		<item>003</item>
+		<item>012</item>
+		<item>011</item>
+		<item>004</item>
+	</string-array>
+    
+	<string-array name="region_title">
+		<item>All Switzerland</item>
+		<item>Oberland Bernois</item>
+		<item>Région du Léman</item>
+		<item>Les Grisons</item>
+		<item>NE / Jura / Jura Bernois</item>
+		<item>Suisse Orientale / Liechtenstein</item>
+		<item>Schweizer Mittelland</item>
+		<item>Région Bâle</item>
+		<item>Région Fribourg</item>
+		<item>Région Zurich</item>
+		<item>Tessin</item>
+		<item>Valais</item>
+		<item>Suisse Centrale</item>
+	</string-array>
+	
+    <string name="load_resorts">Loading resorts...</string>
+	
+    
+    <string name="slopes">Open slopes</string>
+    <string name="artificial_snow">Artificial snow</string>
+    <string name="snow_state">Snow state</string>
+    <string name="slopes_state">Slopes state</string>
+    <string name="slopes_resort">Slope to the resort</string>
+    <string name="last_update">Last update</string>
+</resources>

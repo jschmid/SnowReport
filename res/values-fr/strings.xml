@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SnowReport</string>
+    <string name="preferences_title">Préférences</string>
+    
+    <string name="region_title">Région</string>
+    
+    
+    <string name="load_resorts">Chargement des stations...</string>
+    
+    <string name="slopes">Pistes ouvertes</string>
+    <string name="artificial_snow">Enneigement artificiel</string>
+    <string name="snow_state">Etat de la neige</string>
+    <string name="slopes_state">Etat des pistes</string>
+    <string name="slopes_resort">Pistes jusqu\'à la station</string>
+    <string name="last_update">Mise à jour</string>
+</resources>
