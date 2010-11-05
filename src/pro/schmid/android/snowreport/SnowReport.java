@@ -14,7 +14,10 @@ import org.jsoup.select.Elements;
 import pro.schmid.android.snowreport.model.Resort;
 import pro.schmid.android.snowreport.view.ResortAdapter;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,12 +26,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 public class SnowReport extends Activity {
 	
-	Boolean reloadResorts = true;
+	private Boolean reloadResorts = true;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -70,20 +76,68 @@ public class SnowReport extends Activity {
 		
 		reloadResorts = false;
 		
+		launchLoadResorts();
+	}
+
+	private void launchLoadResorts() {
 		String loadingText = getResources().getString(R.string.load_resorts);
 		final ProgressDialog pd = ProgressDialog.show(this, "", loadingText, true);
+		final AlertDialog.Builder b = new AlertDialog.Builder(this);
 
 		new Thread(new Runnable() {
-			
 			@Override
 			public void run() {
-				loadResorts();
+				try {
+					loadResorts();
+				} catch (ResortsRetrievalException e) {
+					runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							b
+							.setMessage(R.string.resorts_retrieval_error)
+							.setPositiveButton("OK", new OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									finish();
+								}
+							})
+							.show();
+						}
+					});
+				}
 				pd.dismiss();
 			}
 		}).start();
 	}
 
-	private List<Resort> getResorts() {
+	private void loadResorts() throws ResortsRetrievalException {
+		List<Resort> resorts = getResorts();
+		
+		sortResorts(resorts);
+
+		final ListView resortsList = (ListView) findViewById(R.id.resorts_list);
+		
+		resortsList.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> av, View v, int position, long id) {
+				Resort r = (Resort)resortsList.getItemAtPosition(position);
+				
+				Log.d(SnowReport.class.toString(), r.getName());
+			}
+		});
+		
+		final BaseAdapter a = new ResortAdapter(this, R.layout.resort_item, resorts);
+
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				resortsList.setAdapter(a);
+			}
+		});
+	}
+
+	private List<Resort> getResorts() throws ResortsRetrievalException {
 		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 		
@@ -96,8 +150,7 @@ public class SnowReport extends Activity {
 		try {
 			doc = Jsoup.connect(url).get();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ResortsRetrievalException();
 		}
 
 		String sid = doc.select("#sid").attr("value");
@@ -109,8 +162,7 @@ public class SnowReport extends Activity {
 		try {
 			doc = Jsoup.connect("http://snow.myswitzerland.com/servlet/services?object=SearchModel&command=search&jspPath=/jsp/mySwitzerland&jspSearchResultsFile=StationListAjax.jsp&sid=" + sid + "&regionId=" + region + "&oid=" + oid + "&top30=false&ski=true&snowboard=false&crosscountry=false&tobogganing=false&hiking=false&emoSearch=SB&isWispoStation=true&jspPath=%2Fjsp%2FmySwitzerland&jspSearchResultsFile=StationListAjax.jsp&checkAvailability=true&sortAttribute=&AdminSearchTerms=&_=").get();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ResortsRetrievalException();
 		}
 
 		Elements headers = doc.select("th");
@@ -131,6 +183,7 @@ public class SnowReport extends Activity {
 			switch(i++ % 7) {
 			case 0:
 				tmpResort.setName(el.text());
+				tmpResort.setUrl(el.select("a").first().attr("abs:href"));
 				break;
 			case 1:
 				tmpResort.setSlopes(el.text());
@@ -158,27 +211,8 @@ public class SnowReport extends Activity {
 		return resorts;
 	}
 
-	private void loadResorts() {
-		List<Resort> resorts = getResorts();
-		
-		sortResorts(resorts);
-
-		final ListView resortsList = (ListView) findViewById(R.id.resorts_list);
-
-		final BaseAdapter a = new ResortAdapter(this, R.layout.resort_item, resorts);
-
-		runOnUiThread(new Runnable() {
-			
-			@Override
-			public void run() {
-				resortsList.setAdapter(a);
-			}
-		});
-	}
-
 	private void sortResorts(List<Resort> resorts) {
 		Collections.sort(resorts, new Comparator<Resort>() {
-
 			@Override
 			public int compare(Resort r1, Resort r2) {
 				return r1.getName().compareTo(r2.getName());

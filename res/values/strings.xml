@@ -46,4 +46,6 @@
     <string name="slopes_state">Slopes state</string>
     <string name="slopes_resort">Slope to the resort</string>
     <string name="last_update">Last update</string>
+    
+    <string name="resorts_retrieval_error">Error when trying to get the resorts information. Try again later.</string>
 </resources>
