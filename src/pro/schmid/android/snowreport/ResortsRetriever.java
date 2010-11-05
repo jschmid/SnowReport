@@ -17,9 +17,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -60,6 +62,15 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 					Resort r = (Resort)resortsList.getItemAtPosition(position);
 					
 					Log.d(SnowReport.class.toString(), r.getName());
+					
+					Intent i = new Intent(activity, ResortDisplay.class);
+					
+					Bundle bundle = new Bundle();
+					bundle.putString("url", r.getUrl());
+					
+					i.putExtras(bundle);
+					
+					activity.startActivity(i);
 				}
 			});
 			
