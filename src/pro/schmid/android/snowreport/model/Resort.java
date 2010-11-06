@@ -1,11 +1,16 @@
 package pro.schmid.android.snowreport.model;
 
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.util.Log;
 
-public class Resort {
+public class Resort implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8269349132946891090L;
 	private String id;
 	private String name;
 	private String slopes;

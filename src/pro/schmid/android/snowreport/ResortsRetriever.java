@@ -67,6 +67,7 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 					
 					Bundle bundle = new Bundle();
 					bundle.putString("url", r.getUrl());
+					bundle.putSerializable("resort", r);
 					
 					i.putExtras(bundle);
 					
