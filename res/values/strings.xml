@@ -39,6 +39,7 @@
 	</string-array>
 	
     <string name="load_resorts">Loading resorts...</string>
+    <string name="load_resort">Loading resort...</string>
 	
     
     <string name="slopes">Open slopes</string>

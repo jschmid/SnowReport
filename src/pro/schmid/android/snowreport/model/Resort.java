@@ -20,6 +20,7 @@ public class Resort implements Serializable {
 	private String slopesToResort;
 	private String lastUpdate;
 	private String url;
+	private String webcamUrl;
 	
 
 	private final static Pattern p1 = Pattern.compile("res([0-9]+).html$");
@@ -108,6 +109,18 @@ public class Resort implements Serializable {
 	public void setUrl(String url) {
 		this.url = url;
 		setIdFromUrl(url);
+	}
+	/**
+	 * @return the webcamUrl
+	 */
+	public String getWebcamUrl() {
+		return webcamUrl;
+	}
+	/**
+	 * @param webcamUrl the webcamUrl to set
+	 */
+	public void setWebcamUrl(String webcamUrl) {
+		this.webcamUrl = webcamUrl;
 	}
 	
 	

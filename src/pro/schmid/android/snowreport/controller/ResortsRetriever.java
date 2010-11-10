@@ -1,4 +1,4 @@
-package pro.schmid.android.snowreport;
+package pro.schmid.android.snowreport.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +11,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import pro.schmid.android.snowreport.R;
+import pro.schmid.android.snowreport.ResortDisplay;
+import pro.schmid.android.snowreport.ResortsRetrievalException;
+import pro.schmid.android.snowreport.SnowReport;
 import pro.schmid.android.snowreport.model.Resort;
 import pro.schmid.android.snowreport.view.ResortAdapter;
 import android.app.Activity;
@@ -66,7 +70,6 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 					Intent i = new Intent(activity, ResortDisplay.class);
 					
 					Bundle bundle = new Bundle();
-					bundle.putString("url", r.getUrl());
 					bundle.putSerializable("resort", r);
 					
 					i.putExtras(bundle);
@@ -162,7 +165,7 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 			switch(i++ % 7) {
 			case 0:
 				tmpResort.setName(el.text());
-				tmpResort.setUrl(el.select("a").first().attr("abs:href"));
+				tmpResort.setUrl(el.select("a").first().attr("abs:href").replace(" ", "%20"));
 				break;
 			case 1:
 				tmpResort.setSlopes(el.text());

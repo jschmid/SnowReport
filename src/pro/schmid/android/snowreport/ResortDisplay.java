@@ -1,5 +1,6 @@
 package pro.schmid.android.snowreport;
 
+import pro.schmid.android.snowreport.controller.ResortRetriever;
 import pro.schmid.android.snowreport.model.Resort;
 import android.app.Activity;
 import android.os.Bundle;
@@ -18,17 +19,13 @@ public class ResortDisplay extends Activity {
 		
 		Bundle bundle  = this.getIntent().getExtras();
 		
-		String url = bundle.getString("url");
-		
-		TextView t1 = (TextView) findViewById(R.id.resort_url);
-		
-		t1.setText(url);
-		
 		Resort r = (Resort)bundle.getSerializable("resort");
 		
-		TextView t2 = (TextView) findViewById(R.id.resort_name);
+		TextView t = (TextView) findViewById(R.id.resort_main_name);
 		
-		t2.setText(r.getName());
+		t.setText(r.getName());
+		
+		new ResortRetriever(this).execute(r.getUrl());
 	}
 
 }

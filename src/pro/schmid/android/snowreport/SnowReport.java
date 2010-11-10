@@ -1,5 +1,6 @@
 package pro.schmid.android.snowreport;
 
+import pro.schmid.android.snowreport.controller.ResortsRetriever;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
