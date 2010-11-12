@@ -105,6 +105,7 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 		putText(R.id.artificialSnow, r.getArtificialSnow());
 		putText(R.id.snowState, r.getSnowState());
 		putText(R.id.slopesState, r.getSlopesState());
+		putText(R.id.slopesToResort, r.getSlopesToResort());
 		putText(R.id.bottomAltitude, r.getBottomAltitude());
 		putText(R.id.nbInstallations, r.getNbInstallations());
 		putText(R.id.startTime, r.getStartTime());
