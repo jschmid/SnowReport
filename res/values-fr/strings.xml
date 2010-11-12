@@ -25,7 +25,7 @@
 	
     <string name="show_webcam">Afficher webcam</string>
     <string name="show_webcam_on">Afficher la webcam si disponible</string>
-    <string name="show_webcam_off">La webcam n'est pas affichée</string>
+    <string name="show_webcam_off">La webcam n\'est pas affichée</string>
     
     <string name="load_resorts">Chargement des stations...</string>
     <string name="load_resort">Chargement de la station...</string>
@@ -38,7 +38,7 @@
     <string name="last_update">Mise à jour</string>
     
     <string name="bottom_altitude">Altitude en station</string>
-    <string name="nb_installations">Nombre d'installations</string>
+    <string name="nb_installations">Nombre d\'installations</string>
     <string name="start_time">Ouvert depuis</string>
     <string name="stop_time">Ouvert jusqu\'à</string>
     <string name="phone">Téléphone</string>
