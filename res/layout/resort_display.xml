@@ -31,8 +31,7 @@
  <TextView android:id="@+id/slopes"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/slopes_km"
+    android:gravity="right"
     />
  </TableRow>
     
@@ -42,8 +41,7 @@
  <TextView android:id="@+id/artificialSnow"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
-    android:gravity="right" 
-	android:text="@string/artificial_snow"
+    android:gravity="right"
     />
  </TableRow>
  
@@ -53,8 +51,7 @@
  <TextView android:id="@+id/snowState"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/snow_state"
+    android:gravity="right"
     />
  </TableRow>
     
@@ -64,8 +61,7 @@
  <TextView android:id="@+id/slopesState"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/slopes_state"
+    android:gravity="right"
     />
  </TableRow>
     
@@ -75,8 +71,7 @@
  <TextView android:id="@+id/slopesToResort"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/slopes_resort"
+    android:gravity="right"
     />
  </TableRow>
     
@@ -88,8 +83,7 @@
  <TextView android:id="@+id/bottomAltitude"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/bottom_altitude"
+    android:gravity="right"
     />
  </TableRow>
     
@@ -99,8 +93,7 @@
  <TextView android:id="@+id/nbInstallations"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/nb_installations"
+    android:gravity="right"
     />
  </TableRow>
     
@@ -110,8 +103,7 @@
  <TextView android:id="@+id/startTime"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/start_time"
+    android:gravity="right"
     />
  </TableRow>
     
@@ -121,8 +113,7 @@
  <TextView android:id="@+id/stopTime"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/stop_time"
+    android:gravity="right"
     />
  </TableRow>
     
@@ -132,14 +123,13 @@
  <TextView android:id="@+id/phone"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/phone"
+    android:gravity="right"
     />
  </TableRow>
  
  <TableRow>
  <TextView android:id="@+id/lastUpdateTitle" android:text="@string/last_update" />
- <TextView android:id="@+id/lastUpdate" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="right" android:text="@string/last_update" />
+ <TextView android:id="@+id/lastUpdate" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="right" />
  </TableRow>
 </TableLayout>
 
