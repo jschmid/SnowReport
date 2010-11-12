@@ -15,8 +15,11 @@ import pro.schmid.android.snowreport.R;
 import pro.schmid.android.snowreport.ResortsRetrievalException;
 import pro.schmid.android.snowreport.model.Resort;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.DialogInterface.OnClickListener;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -37,16 +40,11 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 	@Override
 	protected Resort doInBackground(String ... params) {
 
-		// TODO Check language
-		
-		Log.d(ResortRetriever.class.toString(), "Downloading: " + params[0]);
-
 		Resort r = null;
 		try {
 			r = getResort(params[0]);
 		} catch (ResortsRetrievalException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
 
 		return r;
@@ -64,10 +62,25 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 	protected void onPostExecute(Resort result) {
 		super.onPostExecute(result);
 
-		placeWebcam(result);
-		placeInfos(result);
+		if(result != null) {
+			placeWebcam(result);
+			placeInfos(result);
 
-		pd.dismiss();
+			pd.dismiss();
+		} else {
+
+			pd.dismiss();
+			
+			new AlertDialog.Builder(activity)
+			.setMessage(R.string.resort_retrieval_error)
+			.setPositiveButton("OK", new OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					activity.finish();
+				}
+			})
+			.show();
+		}
 	}
 
 	private void placeWebcam(final Resort result) {
@@ -88,14 +101,16 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 			@Override
 			public void run() {
 				final Bitmap b = downloadFile(webcamUrl);
-
-				img.post(new Runnable() {
-
-					@Override
-					public void run() {
-						img.setImageBitmap(b);
-					}
-				});
+				
+				if(b != null) {
+					img.post(new Runnable() {
+	
+						@Override
+						public void run() {
+							img.setImageBitmap(b);
+						}
+					});
+				}
 			}
 		}).start();
 	}
@@ -181,9 +196,9 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 		try {
 			myFileUrl= new URL(fileUrl);
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
+		
 		try {
 			HttpURLConnection conn= (HttpURLConnection)myFileUrl.openConnection();
 			conn.setDoInput(true);
@@ -193,11 +208,8 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 			return BitmapFactory.decodeStream(is);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
-
-		return null;
 	}
 
 }
