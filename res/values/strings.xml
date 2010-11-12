@@ -4,39 +4,39 @@
     <string name="preferences_title">Preferences</string>
     <string name="resort_title">Preferences</string>
     
-    
     <string name="region_title">Region</string>
-	<string-array name="region_id">
-		<item>000</item>
-		<item>007</item>
-		<item>009</item>
-		<item>001</item>
-		<item>008</item>
-		<item>002</item>
-		<item>006</item>
-		<item>005</item>
-		<item>013</item>
-		<item>003</item>
-		<item>012</item>
-		<item>011</item>
-		<item>004</item>
-	</string-array>
     
-	<string-array name="region_title">
-		<item>All Switzerland</item>
-		<item>Oberland Bernois</item>
-		<item>Région du Léman</item>
-		<item>Les Grisons</item>
-		<item>NE / Jura / Jura Bernois</item>
-		<item>Suisse Orientale / Liechtenstein</item>
-		<item>Schweizer Mittelland</item>
-		<item>Région Bâle</item>
-		<item>Région Fribourg</item>
-		<item>Région Zurich</item>
-		<item>Tessin</item>
-		<item>Valais</item>
-		<item>Suisse Centrale</item>
-	</string-array>
+    <string-array name="region_id">
+      <item>000</item>
+      <item>007</item>
+      <item>009</item>
+      <item>001</item>
+      <item>008</item>
+      <item>002</item>
+      <item>006</item>
+      <item>005</item>
+      <item>013</item>
+      <item>003</item>
+      <item>012</item>
+      <item>011</item>
+      <item>004</item>
+    </string-array>
+    
+    <string-array name="region_title">
+      <item>All Switzerland</item>
+      <item>Bernese Oberland</item>
+      <item>Geneva Region</item>
+      <item>Graubünden</item>
+      <item>NE / Jura / Bernese Jura</item>
+      <item>Eastern Switzerland / Liechtenstein</item>
+      <item>Swiss Mittelland</item>
+      <item>Basel Region</item>
+      <item>Fribourg Region</item>
+      <item>Zurich Region</item>
+      <item>Ticino</item>
+      <item>Valais</item>
+      <item>Central Switzerland</item>
+    </string-array>
 	
     <string name="show_webcam">Show webcam</string>
     <string name="show_webcam_on">Webcam is shown if available</string>
