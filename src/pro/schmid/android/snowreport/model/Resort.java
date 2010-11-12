@@ -22,9 +22,7 @@ public class Resort implements Serializable {
 	private String url;
 	private String webcamUrl;
 	
-
-	private final static Pattern p1 = Pattern.compile("res([0-9]+).html$");
-	private final static Pattern p2 = Pattern.compile("[0-9]+");
+	private final static Pattern resortUrlMatcher = Pattern.compile("^(.*)/(.+)/(res([0-9]+).html)$");
 	
 	/**
 	 * @return the id
@@ -39,18 +37,10 @@ public class Resort implements Serializable {
 		this.id = id;
 	}
 	public void setIdFromUrl(String url) {
-		Matcher m1 = p1.matcher(url);
-		
-		if(m1.find()) {
-			String tmp = m1.group();
-			
-			Matcher m2 = p2.matcher(tmp);
-			
-			if(m2.find()) {
-				this.id = m2.group();
-				Log.d(Resort.class.toString(), "Resort ID found: " + id);
-			}
-			
+		Matcher matcher = resortUrlMatcher.matcher(url);
+		if(matcher.find()) {
+			this.id = matcher.replaceFirst("$4");
+			Log.d(Resort.class.toString(), "Resort ID found: " + id);
 		} else {
 			Log.d(Resort.class.toString(), "Could not find the resort ID with " + url);
 		}
@@ -107,6 +97,7 @@ public class Resort implements Serializable {
 	 * @param url the url to set
 	 */
 	public void setUrl(String url) {
+		url = resortUrlMatcher.matcher(url).replaceAll("$1/SnowReport/$3");
 		this.url = url;
 		setIdFromUrl(url);
 	}

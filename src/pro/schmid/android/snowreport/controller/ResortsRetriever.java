@@ -165,7 +165,7 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 			switch(i++ % 7) {
 			case 0:
 				tmpResort.setName(el.text());
-				tmpResort.setUrl(el.select("a").first().attr("abs:href").replace(" ", "%20"));
+				tmpResort.setUrl(el.select("a").first().attr("abs:href"));
 				break;
 			case 1:
 				tmpResort.setSlopes(el.text());
