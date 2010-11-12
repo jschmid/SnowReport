@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import pro.schmid.android.snowreport.R;
@@ -17,9 +16,11 @@ import pro.schmid.android.snowreport.ResortsRetrievalException;
 import pro.schmid.android.snowreport.model.Resort;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -70,6 +71,11 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 	}
 
 	private void placeWebcam(final Resort result) {
+		
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+		if(!prefs.getBoolean("show_webcam", true))
+			return;
+		
 		final String webcamUrl = result.getWebcamUrl();
 		
 		if(!Pattern.matches(".*jpg$", webcamUrl))

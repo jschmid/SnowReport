@@ -38,6 +38,10 @@
 		<item>Suisse Centrale</item>
 	</string-array>
 	
+    <string name="show_webcam">Show webcam</string>
+    <string name="show_webcam_on">Webcam is shown if available</string>
+    <string name="show_webcam_off">Webcam is not shown</string>
+	
     <string name="load_resorts">Loading resorts...</string>
     <string name="load_resort">Loading resort...</string>
 	

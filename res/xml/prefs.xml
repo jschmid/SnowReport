@@ -2,4 +2,5 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
 	android:title="@string/preferences_title">
 	<ListPreference android:title="@string/region_title" android:key="region" android:entries="@array/region_title" android:entryValues="@array/region_id"/>
+	<CheckBoxPreference android:title="@string/show_webcam" android:key="show_webcam" android:summaryOff="@string/show_webcam_off" android:summaryOn="@string/show_webcam_on"/>
 </PreferenceScreen>
