@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/scroll">
+
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_height="wrap_content"
@@ -8,6 +8,16 @@
   android:layout_width="fill_parent">
   
 <TextView android:text="Resort name" android:id="@+id/resort_main_name" android:layout_width="fill_parent" android:background="#FF0000" android:padding="5px" android:gravity="center_horizontal" android:layout_height="wrap_content" android:textColor="#000" android:textSize="12pt"></TextView>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/scroll">
+
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="wrap_content"
+  android:orientation="vertical"
+  android:layout_width="fill_parent">
+  
 <ImageView android:layout_height="wrap_content" android:id="@+id/webcamView" android:layout_width="wrap_content"></ImageView>
 
  <TableLayout android:layout_width="fill_parent"
@@ -134,4 +144,7 @@
 </TableLayout>
 
 </LinearLayout>
+
 </ScrollView>
+
+</LinearLayout>
