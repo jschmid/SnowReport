@@ -7,7 +7,7 @@
   android:orientation="vertical"
   android:layout_width="fill_parent">
   
-<TextView android:text="Resort name" android:id="@+id/resort_main_name" android:layout_width="fill_parent" android:background="#FF0000" android:padding="5px" android:gravity="center_horizontal" android:layout_height="wrap_content" android:textColor="#000" android:textSize="12pt"></TextView>
+<TextView android:text="Resort name" android:id="@+id/resort_main_name" android:layout_width="fill_parent" android:padding="5px" android:gravity="center_horizontal" android:layout_height="wrap_content" android:textColor="#000" android:textSize="12pt" android:background="@drawable/display_back"></TextView>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/scroll">
 
@@ -23,9 +23,9 @@
  <TableLayout android:layout_width="fill_parent"
  	android:layout_height="wrap_content"
  	android:id="@+id/resort_infos"
- 	android:stretchColumns="0" android:padding="5sp">
+ 	android:stretchColumns="0">
  
- <TableRow>
+ <TableRow android:layout_width="fill_parent">
  <TextView android:id="@+id/openSlopesKmTitle" android:text="@string/slopes_km" 
   	/>
  <TextView android:id="@+id/slopes"

@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 public class ResortDisplay extends Activity {
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
