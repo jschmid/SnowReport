@@ -3,6 +3,7 @@ package pro.schmid.android.snowreport;
 import pro.schmid.android.snowreport.controller.ResortsRetriever;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +25,11 @@ public class SnowReport extends Activity {
 		super.onResume();
 		refresh();
 	}
+	
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+    	super.onConfigurationChanged(newConfig);
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

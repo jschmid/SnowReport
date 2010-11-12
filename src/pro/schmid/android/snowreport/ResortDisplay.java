@@ -3,6 +3,7 @@ package pro.schmid.android.snowreport;
 import pro.schmid.android.snowreport.controller.ResortRetriever;
 import pro.schmid.android.snowreport.model.Resort;
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -26,5 +27,10 @@ public class ResortDisplay extends Activity {
 		
 		new ResortRetriever(this).execute(r.getUrl());
 	}
+	
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+    	super.onConfigurationChanged(newConfig);
+    }
 
 }
