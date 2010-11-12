@@ -1,6 +1,7 @@
 package pro.schmid.android.snowreport.controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -136,13 +137,16 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 		}
 
 		String sid = doc.select("#sid").attr("value");
+		sid = URLEncoder.encode(sid);
 		String oid = doc.select("#oid").attr("value");
 
 		Log.i(SnowReport.class.toString(), sid);
 		Log.i(SnowReport.class.toString(), oid);
 
+		String mainUrl = "http://snow.myswitzerland.com/servlet/services?object=SearchModel&command=search&jspPath=/jsp/mySwitzerland&jspSearchResultsFile=StationListAjax.jsp&sid=" + sid + "&regionId=" + region + "&oid=" + oid + "&top30=false&ski=true&snowboard=false&crosscountry=false&tobogganing=false&hiking=false&emoSearch=SB&isWispoStation=true&jspPath=%2Fjsp%2FmySwitzerland&jspSearchResultsFile=StationListAjax.jsp&checkAvailability=true&sortAttribute=&AdminSearchTerms=&_=";
+		
 		try {
-			doc = Jsoup.connect("http://snow.myswitzerland.com/servlet/services?object=SearchModel&command=search&jspPath=/jsp/mySwitzerland&jspSearchResultsFile=StationListAjax.jsp&sid=" + sid + "&regionId=" + region + "&oid=" + oid + "&top30=false&ski=true&snowboard=false&crosscountry=false&tobogganing=false&hiking=false&emoSearch=SB&isWispoStation=true&jspPath=%2Fjsp%2FmySwitzerland&jspSearchResultsFile=StationListAjax.jsp&checkAvailability=true&sortAttribute=&AdminSearchTerms=&_=").get();
+			doc = Jsoup.connect(mainUrl).get();
 		} catch (IOException e) {
 			throw new ResortsRetrievalException();
 		}
