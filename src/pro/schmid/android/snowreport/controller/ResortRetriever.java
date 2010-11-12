@@ -137,11 +137,17 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 		
 		Resort r = new Resort();
 
+		fillResortWithUpdate(r, doc);
 		fillResortWithWebcam(r, doc);
 		fillResortWithSki(r, doc);
 		fillResortWithInfo(r, doc);
 		
 		return r;
+	}
+
+	private void fillResortWithUpdate(Resort r, Document doc) {
+		Elements span = doc.select("#aktDate");
+		r.setLastUpdate(span.first().text());
 	}
 
 	private void fillResortWithWebcam(Resort r, Document doc) {
