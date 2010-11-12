@@ -11,8 +11,7 @@
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
     android:text="Resort name"
-  	style="@style/item_text"
-	android:textSize="11pt"/>
+  	style="@style/item_text" android:textSize="22sp"/>
 	
  <TableLayout android:layout_width="fill_parent"
  	android:layout_height="wrap_content"
