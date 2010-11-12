@@ -4,8 +4,7 @@
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
   android:orientation="vertical"
-  android:background="@drawable/item_back"
-  android:padding="5px">
+  android:background="@drawable/item_back" android:padding="5sp">
   
  <TextView android:id="@+id/resort_name"
     android:layout_width="fill_parent" 
@@ -19,13 +18,13 @@
  	android:stretchColumns="0">
  
  <TableRow>
- <TextView android:id="@+id/openSlopesTitle" android:text="@string/slopes" 
+ <TextView android:id="@+id/openSlopesTitle" android:text="@string/slopes_km" 
   	style="@style/item_text"/>
  <TextView android:id="@+id/slopes"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right" 
-	android:text="Open slopes"
+	android:text="@string/slopes_km"
   	style="@style/item_text"
     />
  </TableRow>
@@ -37,7 +36,7 @@
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
     android:gravity="right" 
-	android:text="Artificial snow"
+	android:text="@string/artificial_snow"
   	style="@style/item_text"
     />
  </TableRow>
@@ -49,7 +48,7 @@
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right" 
-	android:text="Snow state"
+	android:text="@string/snow_state"
   	style="@style/item_text"
     />
  </TableRow>
@@ -61,7 +60,7 @@
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right" 
-	android:text="Slopes state"
+	android:text="@string/slopes_state"
   	style="@style/item_text"
     />
  </TableRow>
@@ -73,7 +72,7 @@
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right" 
-	android:text="Slopes to resort"
+	android:text="@string/slopes_resort"
   	style="@style/item_text"
     />
  </TableRow>
@@ -85,7 +84,7 @@
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right" 
-	android:text="Last update"
+	android:text="@string/last_update"
   	style="@style/item_text"
     />
  </TableRow>

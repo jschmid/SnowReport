@@ -168,7 +168,7 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 				tmpResort.setUrl(el.select("a").first().attr("abs:href"));
 				break;
 			case 1:
-				tmpResort.setSlopes(el.text());
+				tmpResort.setSlopesKm(el.text());
 				break;
 			case 2:
 				tmpResort.setArtificialSnow(el.text());

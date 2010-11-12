@@ -42,12 +42,18 @@
     <string name="load_resort">Loading resort...</string>
 	
     
-    <string name="slopes">Open slopes</string>
+    <string name="slopes_km">Open slopes</string>
     <string name="artificial_snow">Artificial snow</string>
     <string name="snow_state">Snow state</string>
     <string name="slopes_state">Slopes state</string>
     <string name="slopes_resort">Slope to the resort</string>
     <string name="last_update">Last update</string>
+    
+    <string name="bottom_altitude">Altitude in resort</string>
+    <string name="nb_installations">Number of lifts</string>
+    <string name="start_time">Open from</string>
+    <string name="stop_time">Open until</string>
+    <string name="phone">Phone number</string>
     
     <string name="resorts_retrieval_error">Error when trying to get the resorts information. Try again later.</string>
 </resources>

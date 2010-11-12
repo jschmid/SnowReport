@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import pro.schmid.android.snowreport.R;
@@ -21,6 +22,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 
@@ -34,6 +36,8 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 	@Override
 	protected Resort doInBackground(String ... params) {
 
+		// TODO Check language
+		
 		Log.d(ResortRetriever.class.toString(), "Downloading: " + params[0]);
 
 		Resort r = null;
@@ -60,6 +64,7 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 		super.onPostExecute(result);
 
 		placeWebcam(result);
+		placeInfos(result);
 
 		pd.dismiss();
 	}
@@ -89,9 +94,27 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 		}).start();
 	}
 
-	private Resort getResort(String url) throws ResortsRetrievalException {
+	private void placeInfos(Resort r) {
+		putText(R.id.slopes, r.getSlopesKm());
+		putText(R.id.artificialSnow, r.getArtificialSnow());
+		putText(R.id.snowState, r.getSnowState());
+		putText(R.id.slopesState, r.getSlopesState());
+		putText(R.id.bottomAltitude, r.getBottomAltitude());
+		putText(R.id.nbInstallations, r.getNbInstallations());
+		putText(R.id.startTime, r.getStartTime());
+		putText(R.id.stopTime, r.getStopTime());
+		putText(R.id.phone, r.getPhone());
+		putText(R.id.lastUpdate, r.getLastUpdate());
+	}
+	
+	private void putText(int id, String text) {
+ 		TextView tv = (TextView) activity.findViewById(id);
+		if (tv != null) {
+			tv.setText(text);
+		}
+	}
 
-		Resort r = new Resort();
+	private Resort getResort(String url) throws ResortsRetrievalException {
 
 		Document doc = null;
 		try {
@@ -100,16 +123,43 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 			throw new ResortsRetrievalException();
 		}
 
-		Elements webcamUrle = doc.select("#flashcontent");
-		Log.d(ResortRetriever.class.toString(), webcamUrle.first().html());
-		webcamUrle = webcamUrle.select("a:contains(webcam)");
+		return fillResortWithContent(doc);
+	}
 
+	private Resort fillResortWithContent(Document doc) {
+		
+		Resort r = new Resort();
+
+		fillResortWithWebcam(r, doc);
+		fillResortWithSki(r, doc);
+		fillResortWithInfo(r, doc);
+		
+		return r;
+	}
+
+	private void fillResortWithWebcam(Resort r, Document doc) {
+		Elements webcamUrle = doc.select("#flashcontent a:contains(webcam)");
 		String webcamUrls = webcamUrle.first().attr("abs:href");
 		r.setWebcamUrl(webcamUrls);
+	}
 
-		Log.d(ResortRetriever.class.toString(), "Got webcam: " + webcamUrls);
+	private void fillResortWithSki(Resort r, Document doc) {
+		Elements tds = doc.select("#ski + div.chapter td");
 
-		return r;
+		r.setSlopesKm(tds.get(0).text());
+		r.setArtificialSnow(tds.get(2).text());
+		r.setSlopesState(tds.get(4).text());
+		r.setSnowState(tds.get(6).text());
+		r.setSlopesToResort(tds.get(8).text());
+		r.setBottomAltitude(tds.get(10).text());
+		r.setStartTime(tds.get(11).text());
+		r.setStopTime(tds.get(13).text());
+		r.setNbInstallations(tds.get(14).text());
+		r.setPhone(tds.get(15).text());
+	}
+
+	private void fillResortWithInfo(Resort r, Document doc) {
+		// TODO
 	}
 
 	private Bitmap downloadFile(String fileUrl) {

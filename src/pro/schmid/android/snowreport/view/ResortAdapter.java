@@ -39,7 +39,7 @@ public class ResortAdapter extends ArrayAdapter<Resort> {
 			
 			tv = (TextView) v.findViewById(R.id.slopes);
 			if(tv != null){
-				tv.setText(r.getSlopes());
+				tv.setText(r.getSlopesKm());
 			}
 			
 			tv = (TextView) v.findViewById(R.id.artificialSnow);

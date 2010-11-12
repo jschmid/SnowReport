@@ -4,6 +4,131 @@
   android:layout_height="wrap_content"
   android:orientation="vertical"
   android:layout_width="fill_parent">
+  
 <TextView android:text="Resort name" android:id="@+id/resort_main_name" android:layout_width="fill_parent" android:background="#FF0000" android:padding="5px" android:gravity="center_horizontal" android:layout_height="wrap_content" android:textColor="#000" android:textSize="12pt"></TextView>
-<ImageView android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/webcamView"></ImageView>
+<ImageView android:layout_height="wrap_content" android:id="@+id/webcamView" android:layout_width="wrap_content"></ImageView>
+
+ <TableLayout android:layout_width="fill_parent"
+ 	android:layout_height="wrap_content"
+ 	android:id="@+id/resort_infos"
+ 	android:stretchColumns="0" android:padding="5sp">
+ 
+ <TableRow>
+ <TextView android:id="@+id/openSlopesKmTitle" android:text="@string/slopes_km" 
+  	/>
+ <TextView android:id="@+id/slopes"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:gravity="right" 
+	android:text="@string/slopes_km"
+    />
+ </TableRow>
+    
+ <TableRow>
+ <TextView android:id="@+id/artificialSnowTitle" android:text="@string/artificial_snow"
+  	/>
+ <TextView android:id="@+id/artificialSnow"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:gravity="right" 
+	android:text="@string/artificial_snow"
+    />
+ </TableRow>
+ 
+ <TableRow>
+ <TextView android:id="@+id/snowStateTitle" android:text="@string/snow_state"
+  	/>
+ <TextView android:id="@+id/snowState"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:gravity="right" 
+	android:text="@string/snow_state"
+    />
+ </TableRow>
+    
+ <TableRow>
+ <TextView android:id="@+id/slopesStateTitle" android:text="@string/slopes_state"
+  	/>
+ <TextView android:id="@+id/slopesState"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:gravity="right" 
+	android:text="@string/slopes_state"
+    />
+ </TableRow>
+    
+ <TableRow>
+ <TextView android:id="@+id/slopesToResortTitle" android:text="@string/slopes_resort"
+  	/>
+ <TextView android:id="@+id/slopesToResort"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:gravity="right" 
+	android:text="@string/slopes_resort"
+    />
+ </TableRow>
+    
+ 
+ 
+ <TableRow>
+ <TextView android:id="@+id/bottomAltitudeTitle" android:text="@string/bottom_altitude"
+  	/>
+ <TextView android:id="@+id/bottomAltitude"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:gravity="right" 
+	android:text="@string/bottom_altitude"
+    />
+ </TableRow>
+    
+ <TableRow>
+ <TextView android:id="@+id/nbInstallationsTitle" android:text="@string/nb_installations"
+  	/>
+ <TextView android:id="@+id/nbInstallations"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:gravity="right" 
+	android:text="@string/nb_installations"
+    />
+ </TableRow>
+    
+ <TableRow>
+ <TextView android:id="@+id/startTimeTitle" android:text="@string/start_time"
+  	/>
+ <TextView android:id="@+id/startTime"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:gravity="right" 
+	android:text="@string/start_time"
+    />
+ </TableRow>
+    
+ <TableRow>
+ <TextView android:id="@+id/stopTimeTitle" android:text="@string/stop_time"
+  	/>
+ <TextView android:id="@+id/stopTime"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:gravity="right" 
+	android:text="@string/stop_time"
+    />
+ </TableRow>
+    
+ <TableRow>
+ <TextView android:id="@+id/phoneTitle" android:text="@string/phone"
+  	/>
+ <TextView android:id="@+id/phone"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:gravity="right" 
+	android:text="@string/phone"
+    />
+ </TableRow>
+ 
+ <TableRow>
+ <TextView android:id="@+id/lastUpdateTitle" android:text="@string/last_update" />
+ <TextView android:id="@+id/lastUpdate" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="right" android:text="@string/last_update" />
+ </TableRow>
+</TableLayout>
+
 </LinearLayout>

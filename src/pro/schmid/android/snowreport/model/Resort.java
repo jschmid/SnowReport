@@ -12,15 +12,24 @@ public class Resort implements Serializable {
 	 */
 	private static final long serialVersionUID = 8269349132946891090L;
 	private String id;
+	
+	// Found on homepage
 	private String name;
-	private String slopes;
+	private String slopesKm;
 	private String artificialSnow;
 	private String snowState;
 	private String slopesState;
 	private String slopesToResort;
 	private String lastUpdate;
 	private String url;
+	
+	// Found on specific page
 	private String webcamUrl;
+	private String bottomAltitude;
+	private String nbInstallations;
+	private String startTime;
+	private String stopTime;
+	private String phone;
 	
 	private final static Pattern resortUrlMatcher = Pattern.compile("^(.*)/(.+)/(res([0-9]+).html)$");
 	
@@ -51,11 +60,11 @@ public class Resort implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSlopes() {
-		return slopes;
+	public String getSlopesKm() {
+		return slopesKm;
 	}
-	public void setSlopes(String slopes) {
-		this.slopes = slopes;
+	public void setSlopesKm(String slopes) {
+		this.slopesKm = slopes;
 	}
 	public String getArtificialSnow() {
 		return artificialSnow;
@@ -113,6 +122,66 @@ public class Resort implements Serializable {
 	public void setWebcamUrl(String webcamUrl) {
 		this.webcamUrl = webcamUrl;
 	}
-	
+
+	/**
+	 * @return the bottomAltitude
+	 */
+	public String getBottomAltitude() {
+		return bottomAltitude;
+	}
+	/**
+	 * @param bottomAltitude the bottomAltitude to set
+	 */
+	public void setBottomAltitude(String bottomAltitude) {
+		this.bottomAltitude = bottomAltitude;
+	}
+	/**
+	 * @return the nbInstallations
+	 */
+	public String getNbInstallations() {
+		return nbInstallations;
+	}
+	/**
+	 * @param nbInstallations the nbInstallations to set
+	 */
+	public void setNbInstallations(String nbInstallations) {
+		this.nbInstallations = nbInstallations;
+	}
+	/**
+	 * @return the startTime
+	 */
+	public String getStartTime() {
+		return startTime;
+	}
+	/**
+	 * @param startTime the startTime to set
+	 */
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+	/**
+	 * @return the stopTime
+	 */
+	public String getStopTime() {
+		return stopTime;
+	}
+	/**
+	 * @param stopTime the stopTime to set
+	 */
+	public void setStopTime(String stopTime) {
+		this.stopTime = stopTime;
+	}
+	/**
+	 * @return the phone
+	 */
+	public String getPhone() {
+		return phone;
+	}
+	/**
+	 * @param phone the phone to set
+	 */
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	
 }
