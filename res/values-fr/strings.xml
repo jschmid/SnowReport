@@ -30,7 +30,7 @@
     <string name="load_resorts">Chargement des stations...</string>
     <string name="load_resort">Chargement de la station...</string>
     
-    <string name="slopes">Pistes ouvertes</string>
+    <string name="slopes_km">Pistes ouvertes</string>
     <string name="artificial_snow">Enneigement artificiel</string>
     <string name="snow_state">Etat de la neige</string>
     <string name="slopes_state">Etat des pistes</string>
