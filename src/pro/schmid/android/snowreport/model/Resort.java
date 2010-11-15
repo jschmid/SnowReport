@@ -107,7 +107,7 @@ public class Resort implements Serializable {
 	 * @param locale the language to use
 	 */
 	public void setUrl(String url, String locale) {
-		url = resortUrlMatcher.matcher(url).replaceAll("$1/SnowReport/$3");
+		url = resortUrlMatcher.matcher(url).replaceAll("$1/$3");
 		url += "?lang=" + locale;
 		this.url = url;
 		setIdFromUrl(url);
