@@ -25,111 +25,118 @@
  	android:id="@+id/resort_infos"
  	android:stretchColumns="0">
  
- <TableRow android:layout_width="fill_parent">
- <TextView android:id="@+id/openSlopesKmTitle" android:text="@string/slopes_km" 
-  	/>
+ <TableRow android:background="#0b66ad" android:padding="3dip" >
+ <TextView android:id="@+id/openSlopesKmTitle" android:text="@string/slopes_km" android:textColor="#EEE"/>
  <TextView android:id="@+id/slopes"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right"
+    android:textColor="#EEE"
     />
  </TableRow>
     
- <TableRow>
- <TextView android:id="@+id/artificialSnowTitle" android:text="@string/artificial_snow"
-  	/>
+ <TableRow android:background="#3992d7" android:padding="3dip">
+ <TextView android:id="@+id/artificialSnowTitle" android:text="@string/artificial_snow" android:textColor="#000"/>
  <TextView android:id="@+id/artificialSnow"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
     android:gravity="right"
+    android:textColor="#000"
     />
  </TableRow>
  
- <TableRow>
- <TextView android:id="@+id/snowStateTitle" android:text="@string/snow_state"
-  	/>
+ <TableRow android:background="#0b66ad" android:padding="3dip">
+ <TextView android:id="@+id/snowStateTitle" android:text="@string/snow_state" android:textColor="#EEE"/>
  <TextView android:id="@+id/snowState"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right"
+    android:textColor="#EEE"
     />
  </TableRow>
     
- <TableRow>
+ <TableRow android:background="#3992d7" android:padding="3dip">
  <TextView android:id="@+id/slopesStateTitle" android:text="@string/slopes_state"
-  	/>
+  	android:textColor="#000"/>
  <TextView android:id="@+id/slopesState"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right"
+    android:textColor="#000"
     />
  </TableRow>
     
- <TableRow>
+ <TableRow android:background="#0b66ad" android:padding="3dip">
  <TextView android:id="@+id/slopesToResortTitle" android:text="@string/slopes_resort"
-  	/>
+  	android:textColor="#EEE"/>
  <TextView android:id="@+id/slopesToResort"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right"
+    android:textColor="#EEE"
     />
  </TableRow>
     
  
  
- <TableRow>
+ <TableRow android:background="#3992d7" android:padding="3dip">
  <TextView android:id="@+id/bottomAltitudeTitle" android:text="@string/bottom_altitude"
-  	/>
+  	android:textColor="#000"/>
  <TextView android:id="@+id/bottomAltitude"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right"
+    android:textColor="#000"
     />
  </TableRow>
     
- <TableRow>
+ <TableRow android:background="#0b66ad" android:padding="3dip">
  <TextView android:id="@+id/nbInstallationsTitle" android:text="@string/nb_installations"
-  	/>
+  	android:textColor="#EEE"/>
  <TextView android:id="@+id/nbInstallations"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right"
+    android:textColor="#EEE"
     />
  </TableRow>
     
- <TableRow>
+ <TableRow android:background="#3992d7" android:padding="3dip">
  <TextView android:id="@+id/startTimeTitle" android:text="@string/start_time"
-  	/>
+  	android:textColor="#000"/>
  <TextView android:id="@+id/startTime"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right"
+    android:textColor="#000"
     />
  </TableRow>
     
- <TableRow>
+ <TableRow android:background="#0b66ad" android:padding="3dip">
  <TextView android:id="@+id/stopTimeTitle" android:text="@string/stop_time"
-  	/>
+  	android:textColor="#EEE"/>
  <TextView android:id="@+id/stopTime"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right"
+    android:textColor="#EEE"
     />
  </TableRow>
     
- <TableRow>
+ <TableRow android:background="#3992d7" android:padding="3dip">
  <TextView android:id="@+id/phoneTitle" android:text="@string/phone"
-  	/>
+  	android:textColor="#000"/>
  <TextView android:id="@+id/phone"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:gravity="right"
+    android:textColor="#000"
     />
  </TableRow>
  
- <TableRow>
- <TextView android:id="@+id/lastUpdateTitle" android:text="@string/last_update" />
- <TextView android:id="@+id/lastUpdate" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="right" />
+ <TableRow android:background="#0b66ad" android:padding="3dip">
+ <TextView android:id="@+id/lastUpdateTitle" android:text="@string/last_update" android:textColor="#EEE"/>
+ <TextView android:id="@+id/lastUpdate" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="right" android:textColor="#EEE"/>
  </TableRow>
 </TableLayout>
 
