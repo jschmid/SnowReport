@@ -31,7 +31,7 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 
 	private ProgressDialog pd;
 	private Activity activity;
-
+	
 	public ResortRetriever(Activity act) {
 		this.activity = act;
 	}
@@ -161,7 +161,8 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 
 	private void fillResortWithUpdate(Resort r, Document doc) {
 		Elements span = doc.select("#aktDate");
-		r.setLastUpdate(span.first().text());
+		String update = span.first().text();
+		r.setLastUpdate(update);
 	}
 
 	private void fillResortWithWebcam(Resort r, Document doc) {

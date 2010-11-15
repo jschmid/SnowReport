@@ -18,7 +18,7 @@
   android:orientation="vertical"
   android:layout_width="fill_parent">
   
-<ImageView android:layout_height="wrap_content" android:id="@+id/webcamView" android:layout_width="wrap_content"></ImageView>
+<ImageView android:layout_height="wrap_content" android:id="@+id/webcamView" android:layout_width="wrap_content" android:layout_gravity="center_vertical|center_horizontal"></ImageView>
 
  <TableLayout android:layout_width="fill_parent"
  	android:layout_height="wrap_content"
@@ -32,6 +32,7 @@
     android:layout_height="wrap_content" 
     android:gravity="right"
     android:textColor="#EEE"
+    android:paddingRight="10dip"
     />
  </TableRow>
     
@@ -42,6 +43,7 @@
     android:layout_height="wrap_content"
     android:gravity="right"
     android:textColor="#000"
+    android:paddingRight="10dip"
     />
  </TableRow>
  
@@ -52,6 +54,7 @@
     android:layout_height="wrap_content" 
     android:gravity="right"
     android:textColor="#EEE"
+    android:paddingRight="10dip"
     />
  </TableRow>
     
@@ -63,6 +66,7 @@
     android:layout_height="wrap_content" 
     android:gravity="right"
     android:textColor="#000"
+    android:paddingRight="10dip"
     />
  </TableRow>
     
@@ -74,6 +78,7 @@
     android:layout_height="wrap_content" 
     android:gravity="right"
     android:textColor="#EEE"
+    android:paddingRight="10dip"
     />
  </TableRow>
     
@@ -87,6 +92,7 @@
     android:layout_height="wrap_content" 
     android:gravity="right"
     android:textColor="#000"
+    android:paddingRight="10dip"
     />
  </TableRow>
     
@@ -98,6 +104,7 @@
     android:layout_height="wrap_content" 
     android:gravity="right"
     android:textColor="#EEE"
+    android:paddingRight="10dip"
     />
  </TableRow>
     
@@ -109,6 +116,7 @@
     android:layout_height="wrap_content" 
     android:gravity="right"
     android:textColor="#000"
+    android:paddingRight="10dip"
     />
  </TableRow>
     
@@ -120,6 +128,7 @@
     android:layout_height="wrap_content" 
     android:gravity="right"
     android:textColor="#EEE"
+    android:paddingRight="10dip"
     />
  </TableRow>
     
@@ -131,12 +140,13 @@
     android:layout_height="wrap_content" 
     android:gravity="right"
     android:textColor="#000"
+    android:paddingRight="10dip"
     />
  </TableRow>
  
  <TableRow android:background="#0b66ad" android:padding="3dip">
  <TextView android:id="@+id/lastUpdateTitle" android:text="@string/last_update" android:textColor="#EEE"/>
- <TextView android:id="@+id/lastUpdate" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="right" android:textColor="#EEE"/>
+ <TextView android:id="@+id/lastUpdate" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="right" android:textColor="#EEE" android:paddingRight="10dip"/>
  </TableRow>
 </TableLayout>
 
