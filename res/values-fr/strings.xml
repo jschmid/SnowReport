@@ -42,6 +42,7 @@
     <string name="start_time">Ouvert depuis</string>
     <string name="stop_time">Ouvert jusqu\'à</string>
     <string name="phone">Téléphone</string>
+    <string name="webcam">Webcam</string>
     
     <string name="resorts_retrieval_error">Une erreur s\'est produite en chargeant les informations sur les stations. Essayez plus tard.</string>
     <string name="resort_retrieval_error">Une erreur s\'est produite en chargeant les informations sur la station. Essayez plus tard.</string>

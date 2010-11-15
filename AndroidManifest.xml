@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="pro.schmid.android.snowreport"
       android:versionCode="1"
-      android:versionName="1.0"
+      android:versionName="1.0.1"
       android:installLocation="auto">
     <application
     	android:icon="@drawable/snow_icon"

@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import pro.schmid.android.snowreport.R;
@@ -31,6 +32,8 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 
 	private ProgressDialog pd;
 	private Activity activity;
+	
+	private static final Pattern p = Pattern.compile("([^:]*:(.*))");
 	
 	public ResortRetriever(Activity act) {
 		this.activity = act;
@@ -67,7 +70,6 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 
 			pd.dismiss();
 		} else {
-
 			pd.dismiss();
 			
 			new AlertDialog.Builder(activity)
@@ -90,11 +92,17 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 		
 		final String webcamUrl = result.getWebcamUrl();
 		
+		if(webcamUrl == null)
+			return;
+		
 		if(!Pattern.matches(".*jpg$", webcamUrl))
 			return;
 		
 		final ImageView img = (ImageView) activity.findViewById(R.id.webcamView);
 
+		if(img == null)
+			return;
+		
 		new Thread(new Runnable() {
 
 			@Override
@@ -130,7 +138,7 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 	
 	private void putText(int id, String text) {
  		TextView tv = (TextView) activity.findViewById(id);
-		if (tv != null) {
+		if (tv != null && text != null) {
 			tv.setText(text);
 		}
 	}
@@ -162,17 +170,39 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 	private void fillResortWithUpdate(Resort r, Document doc) {
 		Elements span = doc.select("#aktDate");
 		String update = span.first().text();
+		
+		if(update == null)
+			return;
+		
+		update = p.matcher(update).replaceFirst("$2");
+		
 		r.setLastUpdate(update);
 	}
 
 	private void fillResortWithWebcam(Resort r, Document doc) {
-		Elements webcamUrle = doc.select("#flashcontent a:contains(webcam)");
-		String webcamUrls = webcamUrle.first().attr("abs:href");
-		r.setWebcamUrl(webcamUrls);
+		Elements webcamUrlEls = doc.select("#flashcontent a:contains(webcam)");
+		
+		if(webcamUrlEls == null)
+			return;
+		
+		Element webcamUrlEl = webcamUrlEls.first();
+		
+		if(webcamUrlEl == null)
+			return;
+		
+		String webcamUrlS = webcamUrlEl.attr("abs:href");
+		
+		if(webcamUrlS == null)
+			return;
+		
+		r.setWebcamUrl(webcamUrlS);
 	}
 
 	private void fillResortWithSki(Resort r, Document doc) {
 		Elements tds = doc.select("#ski + div.chapter td");
+		
+		if(tds == null)
+			return;
 
 		r.setSlopesKm(tds.get(0).text());
 		r.setArtificialSnow(tds.get(2).text());
