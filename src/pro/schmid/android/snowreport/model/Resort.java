@@ -31,7 +31,7 @@ public class Resort implements Serializable {
 	private String stopTime;
 	private String phone;
 	
-	private final static Pattern resortUrlMatcher = Pattern.compile("^(.*)/(.+)/(res([0-9]+).html)$");
+	private final static Pattern resortUrlMatcher = Pattern.compile("^(http://)([^/]+/)(.+)/(res([0-9]+).html)$");
 	
 	/**
 	 * @return the id
@@ -48,7 +48,7 @@ public class Resort implements Serializable {
 	public void setIdFromUrl(String url) {
 		Matcher matcher = resortUrlMatcher.matcher(url);
 		if(matcher.find()) {
-			this.id = matcher.replaceFirst("$4");
+			this.id = matcher.replaceFirst("$5");
 			Log.d(Resort.class.toString(), "Resort ID found: " + id);
 		} else {
 			Log.d(Resort.class.toString(), "Could not find the resort ID with " + url);
@@ -107,7 +107,7 @@ public class Resort implements Serializable {
 	 * @param locale the language to use
 	 */
 	public void setUrl(String url, String locale) {
-		url = resortUrlMatcher.matcher(url).replaceAll("$1/$3");
+		url = resortUrlMatcher.matcher(url).replaceAll("$1$2$4");
 		url += "?lang=" + locale;
 		this.url = url;
 		setIdFromUrl(url);
