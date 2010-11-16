@@ -168,8 +168,14 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 
 			switch(i++ % 7) {
 			case 0:
+				tmpResort = new Resort();
 				tmpResort.setName(el.text());
-				tmpResort.setUrl(el.select("a").first().attr("abs:href"), locale);
+				try {
+					// TODO Do this better
+					tmpResort.setUrl(el.select("a").first().attr("abs:href"), locale);
+				} catch(NullPointerException e) {
+					// TODO
+				}
 				break;
 			case 1:
 				tmpResort.setSlopesKm(el.text());
@@ -189,7 +195,6 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 			case 6:
 				tmpResort.setLastUpdate(el.text());
 				resorts.add(tmpResort);
-				tmpResort = new Resort();
 				break;
 			}
 		}

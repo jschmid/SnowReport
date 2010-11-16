@@ -41,6 +41,9 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 
 	@Override
 	protected Resort doInBackground(String ... params) {
+		
+		if(params.length != 1 || params[0] == null)
+			return null;
 
 		Resort r = null;
 		try {
