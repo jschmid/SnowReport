@@ -7,7 +7,8 @@
     
  <ListView android:id="@+id/resorts_list"
  	android:layout_height="wrap_content"
- 	android:layout_width="fill_parent">
+ 	android:layout_width="fill_parent"
+ 	android:fastScrollEnabled="true">
  </ListView>
  
 </LinearLayout>
