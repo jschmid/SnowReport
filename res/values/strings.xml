@@ -62,4 +62,9 @@
     
     <string name="resorts_retrieval_error">Error when trying to get the resorts information. Try again later.</string>
     <string name="resort_retrieval_error">Error when trying to get the resort information. Try again later.</string>
+    
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
+    
+    
 </resources>

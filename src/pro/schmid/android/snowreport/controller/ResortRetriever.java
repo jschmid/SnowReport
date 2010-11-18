@@ -32,6 +32,7 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 
 	private ProgressDialog pd;
 	private Activity activity;
+	private String resortUrl;
 	
 	private static final Pattern p = Pattern.compile("([^:]*:(.*))");
 	
@@ -45,9 +46,10 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 		if(params.length != 1 || params[0] == null)
 			return null;
 
+		resortUrl = params[0];
 		Resort r = null;
 		try {
-			r = getResort(params[0]);
+			r = getResort(resortUrl);
 		} catch (ResortsRetrievalException e) {
 			return null;
 		}
@@ -77,7 +79,13 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 			
 			new AlertDialog.Builder(activity)
 			.setMessage(R.string.resort_retrieval_error)
-			.setPositiveButton("OK", new OnClickListener() {
+			.setPositiveButton(R.string.retry, new OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					new ResortRetriever(activity).execute(resortUrl);
+				}
+			})
+			.setNegativeButton(R.string.cancel, new OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					activity.finish();

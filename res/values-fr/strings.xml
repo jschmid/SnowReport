@@ -46,4 +46,7 @@
     
     <string name="resorts_retrieval_error">Une erreur s\'est produite en chargeant les informations sur les stations. Essayez plus tard.</string>
     <string name="resort_retrieval_error">Une erreur s\'est produite en chargeant les informations sur la station. Essayez plus tard.</string>
+    
+    <string name="retry">Réessayer</string>
+    <string name="cancel">Annuler</string>
 </resources>

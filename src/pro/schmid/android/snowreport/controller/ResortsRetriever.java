@@ -96,7 +96,13 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 			
 			new AlertDialog.Builder(activity)
 			.setMessage(R.string.resorts_retrieval_error)
-			.setPositiveButton("OK", new OnClickListener() {
+			.setPositiveButton(R.string.retry, new OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					new ResortsRetriever(activity).execute();
+				}
+			})
+			.setNegativeButton(R.string.cancel, new OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					activity.finish();
