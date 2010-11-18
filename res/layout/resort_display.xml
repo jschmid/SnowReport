@@ -7,7 +7,7 @@
   android:orientation="vertical"
   android:layout_width="fill_parent">
   
-<TextView android:text="Resort name" android:id="@+id/resort_main_name" android:layout_width="fill_parent" android:padding="5px" android:gravity="center_horizontal" android:layout_height="wrap_content" android:textColor="#000" android:textSize="12pt" android:background="@drawable/display_back"></TextView>
+<TextView android:text="Resort name" android:id="@+id/resort_main_name" android:layout_width="fill_parent" android:padding="5px" android:gravity="center_horizontal" android:layout_height="wrap_content" android:textColor="#000" android:background="@drawable/display_back" android:textSize="28sp"></TextView>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/scroll">
 
