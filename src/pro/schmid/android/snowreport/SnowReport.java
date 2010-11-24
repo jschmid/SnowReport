@@ -42,11 +42,17 @@ public class SnowReport extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
 	    switch (item.getItemId()) {
+	    case R.id.refresh_button:
+	    	reloadResorts = true;
+	    	refresh();
+	    	return true;
+	    	
 	    case R.id.pref_button:
 	    	reloadResorts = true;
 	    	Intent i = new Intent(getBaseContext(), Preferences.class);
 			startActivity(i);
 	        return true;
+	        
 	    default:
 	        return super.onOptionsItemSelected(item);
 	    }
