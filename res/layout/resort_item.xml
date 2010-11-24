@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="wrap_content"
+  android:layout_width="fill_parent"
   android:layout_height="wrap_content"
   android:orientation="vertical"
   android:background="@drawable/item_back" android:padding="5sp">
   
+  
+
+   <TableLayout android:layout_width="fill_parent"
+ 	android:layout_height="wrap_content"
+ 	android:stretchColumns="0">
+   
+ 	<TableRow>
  <TextView android:id="@+id/resort_name"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
     android:text="Resort name"
   	style="@style/item_text" android:textSize="22sp"/>
+  	
+  	<ImageView android:id="@+id/favoriteImage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/star_off"></ImageView>
+</TableRow>
+</TableLayout>
 	
  <TableLayout android:layout_width="fill_parent"
  	android:layout_height="wrap_content"
