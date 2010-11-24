@@ -22,7 +22,7 @@ public class ResortDisplay extends Activity {
 		
 		t.setText(r.getName());
 		
-		new ResortRetriever(this).execute(r.getUrl());
+		new ResortRetriever(this).execute(r);
 	}
 	
     @Override

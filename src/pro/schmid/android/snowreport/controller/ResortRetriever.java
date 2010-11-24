@@ -14,6 +14,7 @@ import org.jsoup.select.Elements;
 
 import pro.schmid.android.snowreport.R;
 import pro.schmid.android.snowreport.ResortsRetrievalException;
+import pro.schmid.android.snowreport.model.FavoritesManager;
 import pro.schmid.android.snowreport.model.Resort;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -25,14 +26,17 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
-public class ResortRetriever extends AsyncTask<String, Void, Resort> {
+public class ResortRetriever extends AsyncTask<Resort, Void, Resort> {
 
 	private ProgressDialog pd;
 	private Activity activity;
-	private String resortUrl;
+	private Resort resort;
 	
 	private static final Pattern p = Pattern.compile("([^:]*:(.*))");
 	
@@ -41,15 +45,15 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 	}
 
 	@Override
-	protected Resort doInBackground(String ... params) {
+	protected Resort doInBackground(Resort ... params) {
 		
 		if(params.length != 1 || params[0] == null)
 			return null;
 
-		resortUrl = params[0];
+		resort = params[0];
 		Resort r = null;
 		try {
-			r = getResort(resortUrl);
+			r = getResort(resort.getUrl());
 		} catch (ResortsRetrievalException e) {
 			return null;
 		}
@@ -72,6 +76,7 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 		if(result != null) {
 			placeWebcam(result);
 			placeInfos(result);
+			placeFavorite(result);
 
 			pd.dismiss();
 		} else {
@@ -82,7 +87,7 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 			.setPositiveButton(R.string.retry, new OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					new ResortRetriever(activity).execute(resortUrl);
+					new ResortRetriever(activity).execute(resort);
 				}
 			})
 			.setNegativeButton(R.string.cancel, new OnClickListener() {
@@ -154,6 +159,20 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 		}
 	}
 
+	private void placeFavorite(final Resort result) {
+
+		ToggleButton t = (ToggleButton) activity.findViewById(R.id.favoriteDisplayToggle);
+		
+		t.setChecked(FavoritesManager.isFavorite(activity, result.getId()));
+
+		t.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				FavoritesManager.setFavorite(activity, result.getId(), isChecked);
+			}
+		});
+	}
+
 	private Resort getResort(String url) throws ResortsRetrievalException {
 
 		Document doc = null;
@@ -168,14 +187,12 @@ public class ResortRetriever extends AsyncTask<String, Void, Resort> {
 
 	private Resort fillResortWithContent(Document doc) {
 		
-		Resort r = new Resort();
-
-		fillResortWithUpdate(r, doc);
-		fillResortWithWebcam(r, doc);
-		fillResortWithSki(r, doc);
-		fillResortWithInfo(r, doc);
+		fillResortWithUpdate(resort, doc);
+		fillResortWithWebcam(resort, doc);
+		fillResortWithSki(resort, doc);
+		fillResortWithInfo(resort, doc);
 		
-		return r;
+		return resort;
 	}
 
 	private void fillResortWithUpdate(Resort r, Document doc) {

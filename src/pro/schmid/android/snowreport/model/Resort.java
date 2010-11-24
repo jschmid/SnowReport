@@ -107,10 +107,10 @@ public class Resort implements Serializable {
 	 * @param locale the language to use
 	 */
 	public void setUrl(String url, String locale) {
+		setIdFromUrl(url);
 		url = resortUrlMatcher.matcher(url).replaceAll("$1$2$4");
 		url += "?lang=" + locale;
 		this.url = url;
-		setIdFromUrl(url);
 	}
 	/**
 	 * @return the webcamUrl

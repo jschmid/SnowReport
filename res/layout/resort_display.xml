@@ -7,7 +7,18 @@
   android:orientation="vertical"
   android:layout_width="fill_parent">
   
-<TextView android:text="Resort name" android:id="@+id/resort_main_name" android:layout_width="fill_parent" android:padding="5px" android:gravity="center_horizontal" android:layout_height="wrap_content" android:textColor="#000" android:background="@drawable/display_back" android:textSize="28sp"></TextView>
+   <TableLayout android:layout_width="fill_parent"
+ 	android:layout_height="wrap_content"
+ 	android:stretchColumns="0"
+ 	android:background="@drawable/display_back"
+ 	android:paddingLeft="5dip" android:paddingRight="5dip">
+	
+ 	<TableRow>
+	<TextView android:text="Resort name" android:id="@+id/resort_main_name" android:padding="5px" android:layout_height="wrap_content" android:textColor="#000" android:textSize="28sp" android:layout_width="wrap_content" android:gravity="center_vertical"></TextView>
+	<ToggleButton android:textOn="" android:textOff="" android:background="@drawable/favorite" android:layout_height="wrap_content" android:id="@+id/favoriteDisplayToggle" android:layout_width="wrap_content" android:layout_gravity="center"/>
+	</TableRow>
+	
+	</TableLayout>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/scroll">
 
@@ -149,7 +160,7 @@
  
  
  <TableRow android:background="#3992d7" android:padding="3dip">
- <TextView android:id="@+id/phoneTitle" android:text="@string/webcam"
+ <TextView android:id="@+id/webcamTitle" android:text="@string/webcam"
   	android:textColor="#000"/>
  </TableRow>
  
