@@ -12,6 +12,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import pro.schmid.android.snowreport.Constants;
 import pro.schmid.android.snowreport.R;
 import pro.schmid.android.snowreport.ResortDisplay;
 import pro.schmid.android.snowreport.ResortsRetrievalException;
@@ -133,6 +134,10 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 		
 		String region = prefs.getString("region", "000");
 		
+		if(Constants.favoritesKey.equals(region)) {
+			region = "000";
+		}
+		
 		String url = "http://snow.myswitzerland.com/suisse?lang=" + locale;
 		
 		Document doc = null;
@@ -170,7 +175,6 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 
 		int i = 0;
 		for(Element el : resortsElements) {
-			Log.i(SnowReport.class.toString(), el.text());
 
 			switch(i++ % 7) {
 			case 0:

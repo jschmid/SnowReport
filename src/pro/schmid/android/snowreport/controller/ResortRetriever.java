@@ -14,23 +14,20 @@ import org.jsoup.select.Elements;
 
 import pro.schmid.android.snowreport.R;
 import pro.schmid.android.snowreport.ResortsRetrievalException;
-import pro.schmid.android.snowreport.model.FavoritesManager;
 import pro.schmid.android.snowreport.model.Resort;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TableLayout;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 public class ResortRetriever extends AsyncTask<Resort, Void, Resort> {
 
@@ -84,13 +81,13 @@ public class ResortRetriever extends AsyncTask<Resort, Void, Resort> {
 			
 			new AlertDialog.Builder(activity)
 			.setMessage(R.string.resort_retrieval_error)
-			.setPositiveButton(R.string.retry, new OnClickListener() {
+			.setPositiveButton(R.string.retry, new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					new ResortRetriever(activity).execute(resort);
 				}
 			})
-			.setNegativeButton(R.string.cancel, new OnClickListener() {
+			.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					activity.finish();
@@ -159,18 +156,35 @@ public class ResortRetriever extends AsyncTask<Resort, Void, Resort> {
 		}
 	}
 
-	private void placeFavorite(final Resort result) {
+	private void placeFavorite(final Resort r) {
 
-		ToggleButton t = (ToggleButton) activity.findViewById(R.id.favoriteDisplayToggle);
+		final ImageView i = (ImageView) activity.findViewById(R.id.favoriteDisplayToggle);
 		
-		t.setChecked(FavoritesManager.isFavorite(activity, result.getId()));
-
-		t.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				FavoritesManager.setFavorite(activity, result.getId(), isChecked);
+		if(i != null) {
+			if(FavoritesManager.isFavorite(activity, r.getId())) {
+				i.setImageResource(R.drawable.star_on);
+			} else {
+				i.setImageResource(R.drawable.star_off);
 			}
-		});
+		}
+		
+		TableLayout tl = (TableLayout) activity.findViewById(R.id.resortDisplayTitle);
+		
+		if(tl != null) {
+			tl.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					if(FavoritesManager.isFavorite(activity, r.getId())) {
+						i.setImageResource(R.drawable.star_off);
+						FavoritesManager.setFavorite(activity, r.getId(), false);
+					} else {
+						i.setImageResource(R.drawable.star_on);
+						FavoritesManager.setFavorite(activity, r.getId(), true);
+					}
+				}
+			});
+		}
 	}
 
 	private Resort getResort(String url) throws ResortsRetrievalException {

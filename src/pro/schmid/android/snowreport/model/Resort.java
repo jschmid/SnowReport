@@ -49,7 +49,6 @@ public class Resort implements Serializable {
 		Matcher matcher = resortUrlMatcher.matcher(url);
 		if(matcher.find()) {
 			this.id = matcher.replaceFirst("$5");
-			Log.d(Resort.class.toString(), "Resort ID found: " + id);
 		} else {
 			Log.d(Resort.class.toString(), "Could not find the resort ID with " + url);
 		}

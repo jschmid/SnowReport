@@ -8,6 +8,7 @@
     <string name="region_title">Region</string>
     
     <string-array name="region_id">
+      <item>favorites</item>
       <item>000</item>
       <item>007</item>
       <item>009</item>
@@ -24,6 +25,7 @@
     </string-array>
     
     <string-array name="region_title">
+      <item>Favorites</item>
       <item>All Switzerland</item>
       <item>Bernese Oberland</item>
       <item>Geneva Region</item>

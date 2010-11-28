@@ -1,104 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="wrap_content"
-  android:orientation="vertical"
-  android:background="@drawable/item_back" android:padding="5sp">
-  
-  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:orientation="vertical" android:background="@drawable/item_back"
+	android:padding="5sp">
 
-   <TableLayout android:layout_width="fill_parent"
- 	android:layout_height="wrap_content"
- 	android:stretchColumns="0">
-   
- 	<TableRow>
- <TextView android:id="@+id/resort_name"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
-    android:text="Resort name"
-  	style="@style/item_text" android:textSize="22sp"/>
-  	
-  	<ImageView android:id="@+id/favoriteImage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/star_off"></ImageView>
-</TableRow>
-</TableLayout>
-	
- <TableLayout android:layout_width="fill_parent"
- 	android:layout_height="wrap_content"
- 	android:id="@+id/resort_infos"
- 	android:stretchColumns="0">
- 
- <TableRow>
- <TextView android:id="@+id/openSlopesTitle" android:text="@string/slopes_km" 
-  	style="@style/item_text"/>
- <TextView android:id="@+id/slopes"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/slopes_km"
-  	style="@style/item_text"
-    />
- </TableRow>
-    
- <TableRow>
- <TextView android:id="@+id/artificialSnowTitle" android:text="@string/artificial_snow"
-  	style="@style/item_text"/>
- <TextView android:id="@+id/artificialSnow"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
-    android:gravity="right" 
-	android:text="@string/artificial_snow"
-  	style="@style/item_text"
-    />
- </TableRow>
- 
- <TableRow>
- <TextView android:id="@+id/snowStateTitle" android:text="@string/snow_state"
-  	style="@style/item_text"/>
- <TextView android:id="@+id/snowState"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/snow_state"
-  	style="@style/item_text"
-    />
- </TableRow>
-    
- <TableRow>
- <TextView android:id="@+id/slopesStateTitle" android:text="@string/slopes_state"
-  	style="@style/item_text"/>
- <TextView android:id="@+id/slopesState"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/slopes_state"
-  	style="@style/item_text"
-    />
- </TableRow>
-    
- <TableRow>
- <TextView android:id="@+id/slopesToResortTitle" android:text="@string/slopes_resort"
-  	style="@style/item_text"/>
- <TextView android:id="@+id/slopesToResort"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/slopes_resort"
-  	style="@style/item_text"
-    />
- </TableRow>
-    
- <TableRow>
- <TextView android:id="@+id/lastUpdateTitle" android:text="@string/last_update"
-  	style="@style/item_text"/>
- <TextView android:id="@+id/lastUpdate"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:gravity="right" 
-	android:text="@string/last_update"
-  	style="@style/item_text"
-    />
- </TableRow>
-</TableLayout>
+
+
+	<TableLayout android:id="@+id/resort_clicker"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:stretchColumns="0">
+
+		<TableRow>
+			<TextView android:id="@+id/resort_name"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="Resort name" style="@style/item_text"
+				android:textSize="22sp" />
+
+			<ImageView android:id="@+id/favoriteImage"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:src="@drawable/star_off" />
+		</TableRow>
+	</TableLayout>
+
+	<TableLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:id="@+id/resort_infos"
+		android:stretchColumns="0">
+
+		<TableRow>
+			<TextView android:id="@+id/openSlopesTitle" android:text="@string/slopes_km"
+				style="@style/item_text" />
+			<TextView android:id="@+id/slopes" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:gravity="right"
+				android:text="@string/slopes_km" style="@style/item_text" />
+		</TableRow>
+
+		<TableRow>
+			<TextView android:id="@+id/artificialSnowTitle"
+				android:text="@string/artificial_snow" style="@style/item_text" />
+			<TextView android:id="@+id/artificialSnow"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:gravity="right" android:text="@string/artificial_snow"
+				style="@style/item_text" />
+		</TableRow>
+
+		<TableRow>
+			<TextView android:id="@+id/snowStateTitle" android:text="@string/snow_state"
+				style="@style/item_text" />
+			<TextView android:id="@+id/snowState" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:gravity="right"
+				android:text="@string/snow_state" style="@style/item_text" />
+		</TableRow>
+
+		<TableRow>
+			<TextView android:id="@+id/slopesStateTitle" android:text="@string/slopes_state"
+				style="@style/item_text" />
+			<TextView android:id="@+id/slopesState"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:gravity="right" android:text="@string/slopes_state" style="@style/item_text" />
+		</TableRow>
+
+		<TableRow>
+			<TextView android:id="@+id/slopesToResortTitle"
+				android:text="@string/slopes_resort" style="@style/item_text" />
+			<TextView android:id="@+id/slopesToResort"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:gravity="right" android:text="@string/slopes_resort" style="@style/item_text" />
+		</TableRow>
+
+		<TableRow>
+			<TextView android:id="@+id/lastUpdateTitle" android:text="@string/last_update"
+				style="@style/item_text" />
+			<TextView android:id="@+id/lastUpdate" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:gravity="right"
+				android:text="@string/last_update" style="@style/item_text" />
+		</TableRow>
+	</TableLayout>
 
 </LinearLayout>

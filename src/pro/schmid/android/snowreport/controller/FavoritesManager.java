@@ -1,4 +1,4 @@
-package pro.schmid.android.snowreport.model;
+package pro.schmid.android.snowreport.controller;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,6 +17,7 @@ public class FavoritesManager {
 
 	private final static String filename = "favorites.dat";
 	private static HashSet<String> favorites;
+	private static FavoritesChangedListener fcl;
 
 	@SuppressWarnings("unchecked")
 	private static HashSet<String> getFavorites(Activity a) {
@@ -88,6 +89,33 @@ public class FavoritesManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		fcl.favoritesChanged();
 	}
 
+	public static int size(Activity a) {
+		return getFavorites(a).size();
+	}
+
+	public static String getId(Activity a, int position) {
+		
+		HashSet<String> r = getFavorites(a);
+		
+		int i = 0;
+		for(String s : r) {
+			if(i++ == position)
+				return s;
+		}
+		
+		return new String();
+	}
+
+	
+	public static void setFavoritesListener(FavoritesChangedListener fcl) {
+		FavoritesManager.fcl = fcl;
+	}
+
+	public static void toggleFavorite(Activity a, String id) {
+		setFavorite(a, id, !isFavorite(a, id));
+	}
 }

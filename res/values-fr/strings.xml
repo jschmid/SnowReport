@@ -8,6 +8,7 @@
     <string name="region_title">Région</string>
     
     <string-array name="region_title">
+      <item>Favoris</item>
       <item>Toute la Suisse</item>
       <item>Oberland Bernois</item>
       <item>Région du Léman</item>
