@@ -51,4 +51,6 @@
     
     <string name="retry">Réessayer</string>
     <string name="cancel">Annuler</string>
+    
+    <string name="search_hint">Recherche...</string>
 </resources>

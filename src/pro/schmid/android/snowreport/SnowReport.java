@@ -5,9 +5,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 
 public class SnowReport extends Activity {
 	
@@ -18,8 +24,39 @@ public class SnowReport extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.snowreport);
+		
+		setCallbacks();
+		
 	}
 	
+	private void setCallbacks() {
+		EditText et = (EditText) findViewById(R.id.search);
+		
+		if(et != null) {
+			et.addTextChangedListener(new TextWatcher() {
+				
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count) {}
+				
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+				
+				@Override
+				public void afterTextChanged(Editable s) {
+					
+					Log.d(SnowReport.class.toString(), "Searching: <" + s.toString() + ">");
+					
+					ListView resortsList = (ListView) findViewById(R.id.resorts_list);
+					
+					ArrayAdapter a = (ArrayAdapter) resortsList.getAdapter();
+					
+					a.getFilter().filter(s.toString());
+				}
+			});
+		}
+		
+	}
+
 	@Override
 	protected void onResume() {
 		super.onResume();
