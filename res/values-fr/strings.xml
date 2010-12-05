@@ -3,6 +3,7 @@
     <string name="app_name">SnowReport</string>
     <string name="preferences_title">Préférences</string>
     <string name="refresh_title">Rafraichir</string>
+    <string name="search_title">Recherche</string>
     <string name="resort_title">Titre station</string>
     
     <string name="region_title">Région</string>
