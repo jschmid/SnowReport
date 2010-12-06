@@ -26,7 +26,8 @@ import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TableLayout;
+import android.widget.RelativeLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 public class ResortRetriever extends AsyncTask<Resort, Void, Resort> {
@@ -121,12 +122,14 @@ public class ResortRetriever extends AsyncTask<Resort, Void, Resort> {
 			@Override
 			public void run() {
 				final Bitmap b = downloadFile(webcamUrl);
+				final TableRow tr = (TableRow) activity.findViewById(R.id.webcamTitleRow);
 				
 				if(b != null) {
 					img.post(new Runnable() {
 	
 						@Override
 						public void run() {
+							tr.setVisibility(View.VISIBLE);
 							img.setImageBitmap(b);
 						}
 					});
@@ -168,10 +171,10 @@ public class ResortRetriever extends AsyncTask<Resort, Void, Resort> {
 			}
 		}
 		
-		TableLayout tl = (TableLayout) activity.findViewById(R.id.resortDisplayTitle);
+		RelativeLayout rl = (RelativeLayout) activity.findViewById(R.id.resortDisplayTitle);
 		
-		if(tl != null) {
-			tl.setOnClickListener(new View.OnClickListener() {
+		if(rl != null) {
+			rl.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {

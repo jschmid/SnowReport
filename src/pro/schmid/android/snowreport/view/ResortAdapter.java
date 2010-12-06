@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.ImageView;
-import android.widget.TableLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class ResortAdapter extends ArrayAdapter<Resort> implements FavoritesChangedListener {
@@ -100,10 +100,10 @@ public class ResortAdapter extends ArrayAdapter<Resort> implements FavoritesChan
 				}
 			}
 
-			TableLayout tl = (TableLayout) v.findViewById(R.id.resort_clicker);
+			RelativeLayout rl = (RelativeLayout) v.findViewById(R.id.resort_clicker);
 
-			if(tl != null) {
-				tl.setOnClickListener(new OnClickListener() {
+			if(rl != null) {
+				rl.setOnClickListener(new OnClickListener() {
 
 					@Override
 					public void onClick(View v) {

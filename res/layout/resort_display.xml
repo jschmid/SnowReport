@@ -5,24 +5,35 @@
 	android:layout_height="wrap_content" android:orientation="vertical"
 	android:layout_width="fill_parent">
 
-	<TableLayout android:id="@+id/resortDisplayTitle" 
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:stretchColumns="0"
-		android:background="@drawable/display_back" android:paddingLeft="5dip"
+	<RelativeLayout
+		android:id="@+id/resortDisplayTitle"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+		android:background="@drawable/display_back"
+		android:paddingLeft="5dip"
 		android:paddingRight="5dip">
-
-		<TableRow>
-			<TextView android:text="Resort name" android:id="@+id/resort_main_name"
-				android:padding="5px" android:layout_height="wrap_content"
-				android:textColor="#000" android:textSize="28sp"
-				android:layout_width="wrap_content" android:gravity="center_vertical"></TextView>
-			<ImageView 
-				android:src="@drawable/star_off" android:layout_height="wrap_content"
-				android:id="@+id/favoriteDisplayToggle" android:layout_width="wrap_content"
-				android:layout_gravity="center" />
-		</TableRow>
-
-	</TableLayout>
+    
+		<ImageView 
+			android:id="@+id/favoriteDisplayToggle"
+			android:src="@drawable/star_off"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true" />
+			
+		<TextView
+			android:text="Resort name"
+			android:id="@+id/resort_main_name"
+			android:padding="5px"
+			android:textColor="#000"
+			android:textSize="28sp"
+			android:layout_height="wrap_content"
+			android:layout_toLeftOf="@+id/favoriteDisplayToggle"
+			android:gravity="center_vertical"
+			android:layout_width="fill_parent" />
+    
+    </RelativeLayout>
 
 	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
@@ -136,7 +147,7 @@
 				</TableRow>
 
 
-				<TableRow android:background="#3992d7" android:padding="3dip">
+				<TableRow android:id="@+id/webcamTitleRow" android:background="#3992d7" android:padding="3dip" android:visibility="gone">
 					<TextView android:id="@+id/webcamTitle" android:text="@string/webcam"
 						android:textColor="#000" />
 				</TableRow>
