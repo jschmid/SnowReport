@@ -35,6 +35,8 @@ public class ResortRetriever extends AsyncTask<Resort, Void, Resort> {
 	private ProgressDialog pd;
 	private Activity activity;
 	private Resort resort;
+	private SharedPreferences prefs;
+	private int timeout;
 	
 	private static final Pattern p = Pattern.compile("([^:]*:(.*))");
 	
@@ -65,6 +67,9 @@ public class ResortRetriever extends AsyncTask<Resort, Void, Resort> {
 
 		String loadingText = activity.getResources().getString(R.string.load_resort);
 		pd = ProgressDialog.show(activity, "", loadingText, true);
+		
+		prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+		timeout = Integer.parseInt(prefs.getString("timeout", "10000"));
 	}
 
 	@Override
@@ -194,7 +199,7 @@ public class ResortRetriever extends AsyncTask<Resort, Void, Resort> {
 
 		Document doc = null;
 		try {
-			doc = Jsoup.connect(url).get();
+			doc = Jsoup.connect(url).timeout(timeout).get();
 		} catch (IOException e) {
 			throw new ResortsRetrievalException();
 		}

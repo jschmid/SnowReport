@@ -5,8 +5,10 @@ import pro.schmid.android.snowreport.model.Resort;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -19,15 +21,20 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class SnowReport extends Activity {
 
 	private Boolean reloadResorts = true;
+	private SharedPreferences prefs;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		
 		setContentView(R.layout.snowreport);
 
 		setCallbacks();
@@ -78,6 +85,7 @@ public class SnowReport extends Activity {
 		case R.id.search_menu_button:
 			launchSearch();
 			return true;
+			
 		case R.id.refresh_button:
 			reloadResorts = true;
 			refresh();
@@ -85,6 +93,7 @@ public class SnowReport extends Activity {
 
 		case R.id.pref_button:
 			reloadResorts = true;
+			showHideSearch(false);
 			Intent i = new Intent(getBaseContext(), Preferences.class);
 			startActivity(i);
 			return true;
@@ -112,19 +121,36 @@ public class SnowReport extends Activity {
 	}
 	
 	private void launchSearch() {
+		
+		String region = prefs.getString("region", "000");
+
+		if (Constants.favoritesKey.equals(region)) {
+			Toast.makeText(this, R.string.search_favorites, Toast.LENGTH_LONG).show();
+			return;
+		}
+
+		LinearLayout l = (LinearLayout) findViewById(R.id.searchWrapper);
+		if(l.getVisibility() == View.VISIBLE) {
+			showHideSearch(false);
+		} else {
+			showHideSearch(true);
+		}
+	}
+	
+	private void showHideSearch(boolean show) {
 		EditText e = (EditText) findViewById(R.id.searchText);
 		LinearLayout l = (LinearLayout) findViewById(R.id.searchWrapper);
 		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-
-		if(l.getVisibility() == View.VISIBLE) {
+		
+		if(show) {
+			l.setVisibility(View.VISIBLE);
+			e.requestFocus();
+			imm.showSoftInput(e, 0);
+		} else {
 			imm.hideSoftInputFromWindow(e.getWindowToken(), 0);
 			e.clearFocus();
 			l.setVisibility(View.GONE);
 			filter("");
-		} else {
-			l.setVisibility(View.VISIBLE);
-			e.requestFocus();
-			imm.showSoftInput(e, 0);
 		}
 	}
 

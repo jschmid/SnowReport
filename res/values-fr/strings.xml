@@ -7,6 +7,7 @@
     <string name="resort_title">Titre station</string>
     
     <string name="region_title">Région</string>
+    <string name="timeout_title">Délai de chargement</string>
     
     <string-array name="region_title">
       <item>Favoris</item>
@@ -23,6 +24,17 @@
       <item>Tessin</item>
       <item>Valais</item>
       <item>Suisse Centrale</item>
+    </string-array>
+    
+    <string-array name="timeout_title">
+      <item>5 secondes</item>
+      <item>10 secondes (défaut)</item>
+      <item>15 secondes</item>
+      <item>20 secondes</item>
+      <item>30 secondes</item>
+      <item>45 secondes</item>
+      <item>1 minute</item>
+      <item>2 minutes</item>
     </string-array>
     
 	
@@ -54,4 +66,5 @@
     <string name="cancel">Annuler</string>
     
     <string name="search_hint">Recherche...</string>
+    <string name="search_favorites">La recherche n\'est pas disponible dans la vue "favoris".</string>
 </resources>

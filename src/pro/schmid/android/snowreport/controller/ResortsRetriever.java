@@ -38,11 +38,12 @@ import android.widget.ListView;
 
 public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 	
-	private SharedPreferences prefs;
 	private String locale;
 	private ProgressDialog pd;
 	private ListView resortsList;
 	private Activity activity;
+	private SharedPreferences prefs;
+	private int timeout;
 	
 	public ResortsRetriever(Activity act) {
 		this.activity = act;
@@ -124,6 +125,7 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 		
 		prefs = PreferenceManager.getDefaultSharedPreferences(activity);
 		locale = activity.getResources().getConfiguration().locale.getLanguage();
+		timeout = Integer.parseInt(prefs.getString("timeout", "10000"));
 		
 		String loadingText = activity.getResources().getString(R.string.load_resorts);
 		pd = ProgressDialog.show(activity, "", loadingText, true);
@@ -142,7 +144,7 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 		
 		Document doc = null;
 		try {
-			doc = Jsoup.connect(url).get();
+			doc = Jsoup.connect(url).timeout(timeout).get();
 		} catch (IOException e) {
 			throw new ResortsRetrievalException();
 		}
@@ -157,7 +159,7 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 		String mainUrl = "http://snow.myswitzerland.com/servlet/services?object=SearchModel&command=search&jspPath=/jsp/mySwitzerland&jspSearchResultsFile=StationListAjax.jsp&sid=" + sid + "&regionId=" + region + "&oid=" + oid + "&top30=false&ski=true&snowboard=false&crosscountry=false&tobogganing=false&hiking=false&emoSearch=SB&isWispoStation=true&jspPath=%2Fjsp%2FmySwitzerland&jspSearchResultsFile=StationListAjax.jsp&checkAvailability=true&sortAttribute=&AdminSearchTerms=&_=";
 		
 		try {
-			doc = Jsoup.connect(mainUrl).get();
+			doc = Jsoup.connect(mainUrl).timeout(timeout).get();
 		} catch (IOException e) {
 			throw new ResortsRetrievalException();
 		}

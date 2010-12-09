@@ -7,6 +7,7 @@
     <string name="resort_title">Resort title</string>
     
     <string name="region_title">Region</string>
+    <string name="timeout_title">Download timeout</string>
     
     <string-array name="region_id">
       <item>favorites</item>
@@ -41,6 +42,28 @@
       <item>Valais</item>
       <item>Central Switzerland</item>
     </string-array>
+    
+    <string-array name="timeout_id">
+      <item>5000</item>
+      <item>10000</item>
+      <item>15000</item>
+      <item>20000</item>
+      <item>30000</item>
+      <item>45000</item>
+      <item>60000</item>
+      <item>120000</item>
+    </string-array>
+    
+    <string-array name="timeout_title">
+      <item>5 seconds</item>
+      <item>10 seconds (default)</item>
+      <item>15 seconds</item>
+      <item>20 seconds</item>
+      <item>30 seconds</item>
+      <item>45 seconds</item>
+      <item>1 minute</item>
+      <item>2 minutes</item>
+    </string-array>
 	
     <string name="show_webcam">Show webcam</string>
     <string name="show_webcam_on">Webcam is shown if available</string>
@@ -71,6 +94,7 @@
     <string name="cancel">Cancel</string>
     
     <string name="search_hint">Search...</string>
+    <string name="search_favorites">Search is not available in the "favorites" view.</string>
     
     
 </resources>

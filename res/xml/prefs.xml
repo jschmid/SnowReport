@@ -3,4 +3,5 @@
 	android:title="@string/preferences_title">
 	<ListPreference android:title="@string/region_title" android:key="region" android:entries="@array/region_title" android:entryValues="@array/region_id" android:defaultValue="000"/>
 	<CheckBoxPreference android:title="@string/show_webcam" android:key="show_webcam" android:summaryOff="@string/show_webcam_off" android:summaryOn="@string/show_webcam_on" android:defaultValue="true"/>
+	<ListPreference android:title="@string/timeout_title" android:key="timeout" android:entries="@array/timeout_title" android:entryValues="@array/timeout_id" android:defaultValue="10000"/>
 </PreferenceScreen>
