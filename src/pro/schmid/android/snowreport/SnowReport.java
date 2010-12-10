@@ -2,6 +2,7 @@ package pro.schmid.android.snowreport;
 
 import pro.schmid.android.snowreport.controller.ResortsRetriever;
 import pro.schmid.android.snowreport.model.Resort;
+import pro.schmid.android.snowreport.view.ResortAdapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,16 +18,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class SnowReport extends Activity {
 
 	private Boolean reloadResorts = true;
 	private SharedPreferences prefs;
+	private ResortAdapter adapter;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -37,27 +41,8 @@ public class SnowReport extends Activity {
 		
 		setContentView(R.layout.snowreport);
 
+		setAdapter();
 		setCallbacks();
-	}
-
-	private void setCallbacks() {
-		EditText et = (EditText) findViewById(R.id.searchText);
-
-		if(et != null) {
-			et.addTextChangedListener(new TextWatcher() {
-
-				@Override
-				public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-				@Override
-				public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-				@Override
-				public void afterTextChanged(Editable s) {
-					filter(s.toString());
-				}
-			});
-		}
 	}
 
 	@Override
@@ -102,6 +87,51 @@ public class SnowReport extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
+	
+	private void setAdapter() {
+		adapter = new ResortAdapter(this, R.layout.resort_item);
+		final ListView resortsList = (ListView) findViewById(R.id.resorts_list);
+		resortsList.setAdapter(adapter);
+
+		resortsList.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> av, View v, int position, long id) {
+				Resort r = (Resort)resortsList.getItemAtPosition(position);
+				
+				Log.d(SnowReport.class.toString(), r.getName());
+				
+				Intent i = new Intent(getApplicationContext(), ResortDisplay.class);
+				
+				Bundle bundle = new Bundle();
+				bundle.putSerializable("resort", r);
+				
+				i.putExtras(bundle);
+				
+				getApplicationContext().startActivity(i);
+			}
+		});
+	}
+
+	private void setCallbacks() {
+		EditText et = (EditText) findViewById(R.id.searchText);
+
+		if(et != null) {
+			et.addTextChangedListener(new TextWatcher() {
+
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+				@Override
+				public void afterTextChanged(Editable s) {
+					filter(s.toString());
+				}
+			});
+		}
+	}
 
 	private void refresh() {
 		if(!reloadResorts)
@@ -109,7 +139,7 @@ public class SnowReport extends Activity {
 
 		reloadResorts = false;
 
-		new ResortsRetriever(this).execute();
+		new ResortsRetriever(this, adapter).execute();
 	}
 
 	@Override

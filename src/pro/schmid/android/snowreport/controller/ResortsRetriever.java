@@ -14,7 +14,6 @@ import org.jsoup.select.Elements;
 
 import pro.schmid.android.snowreport.Constants;
 import pro.schmid.android.snowreport.R;
-import pro.schmid.android.snowreport.ResortDisplay;
 import pro.schmid.android.snowreport.ResortsRetrievalException;
 import pro.schmid.android.snowreport.SnowReport;
 import pro.schmid.android.snowreport.model.Resort;
@@ -24,33 +23,27 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
 
-public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
+public class ResortsRetriever extends AsyncTask<Void, Void, List<Resort>> {
 	
 	private String locale;
 	private ProgressDialog pd;
-	private ListView resortsList;
 	private Activity activity;
 	private SharedPreferences prefs;
 	private int timeout;
+	private ResortAdapter adapter;
 	
-	public ResortsRetriever(Activity act) {
+	public ResortsRetriever(Activity act, ResortAdapter adapter) {
 		this.activity = act;
+		this.adapter = adapter;
 	}
 	
 	@Override
-	protected BaseAdapter doInBackground(Void... params) {
+	protected List<Resort> doInBackground(Void ... params) {
 			List<Resort> resorts;
 			try {
 				resorts = getResorts();
@@ -60,40 +53,19 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 			
 			sortResorts(resorts);
 			
-			resortsList = (ListView) activity.findViewById(R.id.resorts_list);
-			
-			resortsList.setOnItemClickListener(new OnItemClickListener() {
-
-				@Override
-				public void onItemClick(AdapterView<?> av, View v, int position, long id) {
-					Resort r = (Resort)resortsList.getItemAtPosition(position);
-					
-					Log.d(SnowReport.class.toString(), r.getName());
-					
-					Intent i = new Intent(activity, ResortDisplay.class);
-					
-					Bundle bundle = new Bundle();
-					bundle.putSerializable("resort", r);
-					
-					i.putExtras(bundle);
-					
-					activity.startActivity(i);
-				}
-			});
-			
-			final BaseAdapter a = new ResortAdapter(activity, R.layout.resort_item, resorts);
-
-			return a;
+			return resorts;
 	}
 	/* (non-Javadoc)
 	 * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
 	 */
 	@Override
-	protected void onPostExecute(BaseAdapter a) {
-		super.onPostExecute(a);
+	protected void onPostExecute(List<Resort> resorts) {
+		super.onPostExecute(resorts);
 		
-		if(a != null) {
-			resortsList.setAdapter(a);
+		if(resorts != null) {
+			adapter.addResorts(resorts);
+			adapter.notifyDataSetChanged();
+			
 		} else {
 			
 			new AlertDialog.Builder(activity)
@@ -101,7 +73,7 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 			.setPositiveButton(R.string.retry, new OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					new ResortsRetriever(activity).execute();
+					new ResortsRetriever(activity, adapter).execute();
 				}
 			})
 			.setNegativeButton(R.string.cancel, new OnClickListener() {
@@ -213,7 +185,6 @@ public class ResortsRetriever extends AsyncTask<Void, Void, BaseAdapter> {
 
 		return resorts;
 	}
-
 
 
 	private void sortResorts(List<Resort> resorts) {

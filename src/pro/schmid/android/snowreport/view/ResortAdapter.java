@@ -31,11 +31,11 @@ public class ResortAdapter extends ArrayAdapter<Resort> implements FavoritesChan
 	private SharedPreferences prefs;
 	private ResortFilter filter;
 
-	public ResortAdapter(Activity activity, int textViewResourceId, List<Resort> items) {
-		super(activity, textViewResourceId, items);
+	public ResortAdapter(Activity activity, int textViewResourceId) {
+		super(activity, textViewResourceId);
 
-		this.resorts = items;
-		this.filtered = new ArrayList<Resort>(items);
+		this.resorts = new ArrayList<Resort>();
+		this.filtered = new ArrayList<Resort>();
 		this.activity = activity;
 
 		mInflater = LayoutInflater.from(activity);
@@ -159,6 +159,20 @@ public class ResortAdapter extends ArrayAdapter<Resort> implements FavoritesChan
 			filter = new ResortFilter();
 		
 		return filter;
+	}
+
+	/* (non-Javadoc)
+	 * @see android.widget.ArrayAdapter#add(java.lang.Object)
+	 */
+	@Override
+	public void add(Resort object) {
+		this.resorts.add(object);
+		this.filtered.add(object);
+	}
+
+	public void addResorts(List<Resort> resorts) {
+		this.resorts = resorts;
+		this.filtered = new ArrayList<Resort>(this.resorts);
 	}
 
 
