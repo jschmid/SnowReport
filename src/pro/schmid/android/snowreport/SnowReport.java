@@ -89,6 +89,7 @@ public class SnowReport extends Activity {
 	}
 	
 	private void setAdapter() {
+		final Activity activity = this;
 		adapter = new ResortAdapter(this, R.layout.resort_item);
 		final ListView resortsList = (ListView) findViewById(R.id.resorts_list);
 		resortsList.setAdapter(adapter);
@@ -108,7 +109,7 @@ public class SnowReport extends Activity {
 				
 				i.putExtras(bundle);
 				
-				getApplicationContext().startActivity(i);
+				activity.startActivity(i);
 			}
 		});
 	}
